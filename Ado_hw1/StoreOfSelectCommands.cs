@@ -141,5 +141,20 @@ order by [Caloric_Content]";
                 Console.WriteLine(reader[0] + "\t" + reader[1] + "\t" + reader[2]);
             };
         }
+
+        public static void GetAVGCaloric(string connectionString)
+        {
+            using var connection = new SqlConnection();
+            connection.ConnectionString = connectionString;
+            connection.Open();
+
+            var insertCommandText = @"select avg ([Caloric_Content]) as [Средняя калорийность] from Vegetables_Fruits";
+
+            var selectCommand = new SqlCommand(insertCommandText, connection);
+            using var reader = selectCommand.ExecuteReader();
+            reader.Read();
+            Console.WriteLine($"средняя калорийность  {reader[0]:#.###}");
+        }
+
     }
 }

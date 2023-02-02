@@ -9,3 +9,4 @@ var connectionString = @"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog = V
 //StoreOfSelectCommands.GetAllColor(connectionString);
 StoreOfSelectCommands.GetMaxCaloric(connectionString);
 StoreOfSelectCommands.GetMinCaloric(connectionString);
+StoreOfSelectCommands.GetAVGCaloric(connectionString);
