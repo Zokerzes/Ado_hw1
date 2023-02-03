@@ -23,3 +23,6 @@
 use VegetablesAndFruits
 --select DISTINCT [id],[ClolorVF] from Vegetables_Fruits
 select avg ([Caloric_Content]) as [Средняя калорийность] from Vegetables_Fruits
+
+--BackUp database [VegetablesAndFruits]
+--to disk='D:\itSteps\adonet'
