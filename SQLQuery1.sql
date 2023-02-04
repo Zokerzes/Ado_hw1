@@ -27,6 +27,6 @@
 --BackUp database [VegetablesAndFruits]
 --to disk='D:\itSteps\adonet'
 
-select count(id) as  [количество овощей], ClolorVF
-from[dbo].[Vegetables_Fruits]
-group by [ClolorVF]
+select NameVF,Caloric_Content as [калорийность ниже 200]
+from Vegetables_Fruits
+where Caloric_Content < 200

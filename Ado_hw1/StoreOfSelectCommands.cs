@@ -271,5 +271,61 @@ group by [ClolorVF]";
             }
         }
 
+        public static void GetAllWithCaloricMinX(string connectionString)
+        {
+            using var connection = new SqlConnection();
+            connection.ConnectionString = connectionString;
+            connection.Open();
+
+            var insertCommandText = @"select NameVF,Caloric_Content as [калорийность ниже 200]
+from Vegetables_Fruits
+where Caloric_Content < 200";
+
+            var selectCommand = new SqlCommand(insertCommandText, connection);
+            using var reader = selectCommand.ExecuteReader();
+            var lineCounter = 0;
+            while (reader.Read())
+            {
+                if (lineCounter == 0)
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        Console.Write(reader.GetName(i).ToString() + " ");
+                    }
+                }
+                Console.WriteLine();
+                lineCounter++;
+
+                Console.WriteLine(reader[0] + " " + reader[1]);
+            }
+        }
+        public static void GetAllWithCaloricMaxX(string connectionString)
+        {
+            using var connection = new SqlConnection();
+            connection.ConnectionString = connectionString;
+            connection.Open();
+
+            var insertCommandText = @"select NameVF,Caloric_Content as [калорийность выже 199]
+from Vegetables_Fruits
+where Caloric_Content > 199";
+
+            var selectCommand = new SqlCommand(insertCommandText, connection);
+            using var reader = selectCommand.ExecuteReader();
+            var lineCounter = 0;
+            while (reader.Read())
+            {
+                if (lineCounter == 0)
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        Console.Write(reader.GetName(i).ToString() + " ");
+                    }
+                }
+                Console.WriteLine();
+                lineCounter++;
+
+                Console.WriteLine(reader[0] + " " + reader[1]);
+            }
+        }
     }
 }
