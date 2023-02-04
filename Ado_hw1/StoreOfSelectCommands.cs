@@ -327,5 +327,35 @@ where Caloric_Content > 199";
                 Console.WriteLine(reader[0] + " " + reader[1]);
             }
         }
+
+        public static void GetAllWithCaloricBetweenXY(string connectionString)
+        {
+            using var connection = new SqlConnection();
+            connection.ConnectionString = connectionString;
+            connection.Open();
+
+            var insertCommandText = @"select NameVF,Caloric_Content as [калорийность от 145 до 201]
+from Vegetables_Fruits
+where Caloric_Content BETWEEN 145 AND 201
+order by Caloric_Content";
+
+            var selectCommand = new SqlCommand(insertCommandText, connection);
+            using var reader = selectCommand.ExecuteReader();
+            var lineCounter = 0;
+            while (reader.Read())
+            {
+                if (lineCounter == 0)
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        Console.Write(reader.GetName(i).ToString() + " ");
+                    }
+                }
+                Console.WriteLine();
+                lineCounter++;
+
+                Console.WriteLine(reader[0] + " " + reader[1]);
+            }
+        }
     }
 }

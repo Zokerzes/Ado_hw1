@@ -27,6 +27,6 @@
 --BackUp database [VegetablesAndFruits]
 --to disk='D:\itSteps\adonet'
 
-select NameVF,Caloric_Content as [калорийность ниже 200]
+select NameVF,Caloric_Content as [калорийность от 145 до 201]
 from Vegetables_Fruits
-where Caloric_Content < 200
+where Caloric_Content BETWEEN 145 AND 201

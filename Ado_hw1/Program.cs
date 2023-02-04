@@ -15,4 +15,5 @@ var connectionString = @"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog = V
 //StoreOfSelectCommands.GetCountByEveryColor(connectionString);
 StoreOfSelectCommands.GetAllWithCaloricMinX (connectionString);
 StoreOfSelectCommands.GetAllWithCaloricMaxX(connectionString);
+StoreOfSelectCommands.GetAllWithCaloricBetweenXY(connectionString);
 
