@@ -19,10 +19,14 @@
 --		(N'Яблоки',N'Фрукты',N'Зелёные',170),
 --		(N'Бананы',N'Фрукты',N'Желтые',400)
 
---select [NameVF],[TypeVF],[ClolorVF],[Caloric_Content] from Vegetables_Fruits
-use VegetablesAndFruits
---select DISTINCT [id],[ClolorVF] from Vegetables_Fruits
-select avg ([Caloric_Content]) as [Средняя калорийность] from Vegetables_Fruits
+----select [NameVF],[TypeVF],[ClolorVF],[Caloric_Content] from Vegetables_Fruits
+--use VegetablesAndFruits
+----select DISTINCT [id],[ClolorVF] from Vegetables_Fruits
+--select avg ([Caloric_Content]) as [Средняя калорийность] from Vegetables_Fruits
 
 --BackUp database [VegetablesAndFruits]
 --to disk='D:\itSteps\adonet'
+
+select count(id) as  [количество овощей], ClolorVF
+from[dbo].[Vegetables_Fruits]
+group by [ClolorVF]

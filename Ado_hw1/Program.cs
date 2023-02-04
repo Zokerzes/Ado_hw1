@@ -7,6 +7,10 @@ var connectionString = @"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog = V
 //StoreOfSelectCommands.GetAllInfo(connectionString);
 //StoreOfSelectCommands.GetAllName(connectionString);
 //StoreOfSelectCommands.GetAllColor(connectionString);
-StoreOfSelectCommands.GetMaxCaloric(connectionString);
-StoreOfSelectCommands.GetMinCaloric(connectionString);
-StoreOfSelectCommands.GetAVGCaloric(connectionString);
+//StoreOfSelectCommands.GetMaxCaloric(connectionString);
+//StoreOfSelectCommands.GetMinCaloric(connectionString);
+//StoreOfSelectCommands.GetAVGCaloric(connectionString);
+StoreOfSelectCommands.GetCountVegetables(connectionString);
+StoreOfSelectCommands.GetCountFruits(connectionString);
+StoreOfSelectCommands.GetCountByEveryColor(connectionString);
+

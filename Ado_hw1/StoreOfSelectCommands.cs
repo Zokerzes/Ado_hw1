@@ -155,6 +155,121 @@ order by [Caloric_Content]";
             reader.Read();
             Console.WriteLine($"средняя калорийность  {reader[0]:#.###}");
         }
+        public static void GetCountVegetables(string connectionString)
+        {
+            using var connection = new SqlConnection();
+            connection.ConnectionString = connectionString;
+            connection.Open();
+
+            var insertCommandText = @"select count(id) as  [количество овощей]
+from[dbo].[Vegetables_Fruits]
+where [TypeVF]=N'Овощи'";
+
+            var selectCommand = new SqlCommand(insertCommandText, connection);
+            using var reader = selectCommand.ExecuteReader();
+            var lineCounter = 0;
+            while (reader.Read())
+            {
+                if (lineCounter == 0)
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        Console.Write(reader.GetName(i).ToString() + " ");
+                    }
+                }
+                Console.WriteLine();
+                lineCounter++;
+
+                Console.WriteLine(reader[0]);
+            }
+        }
+
+        public static void GetCountFruits(string connectionString)
+        {
+            using var connection = new SqlConnection();
+            connection.ConnectionString = connectionString;
+            connection.Open();
+
+            var insertCommandText = @"select count(id) as  [количество фруктов]
+from[dbo].[Vegetables_Fruits]
+where [TypeVF]=N'Фрукты'";
+
+            var selectCommand = new SqlCommand(insertCommandText, connection);
+            using var reader = selectCommand.ExecuteReader();
+            var lineCounter = 0;
+            while (reader.Read())
+            {
+                if (lineCounter == 0)
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        Console.Write(reader.GetName(i).ToString() + " ");
+                    }
+                }
+                Console.WriteLine();
+                lineCounter++;
+
+                Console.WriteLine(reader[0]);
+            }
+        }
+
+        public static void GetCountByColor(string connectionString)
+        {
+            using var connection = new SqlConnection();
+            connection.ConnectionString = connectionString;
+            connection.Open();
+
+            var insertCommandText = @"select count(id) as  [количество]
+from [dbo].[Vegetables_Fruits]
+where [ClolorVF]=N'Белый'";
+
+            var selectCommand = new SqlCommand(insertCommandText, connection);
+            using var reader = selectCommand.ExecuteReader();
+            var lineCounter = 0;
+            while (reader.Read())
+            {
+                if (lineCounter == 0)
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        Console.Write(reader.GetName(i).ToString() + " ");
+                    }
+                }
+                Console.WriteLine();
+                lineCounter++;
+
+                Console.WriteLine(reader[0]);
+            }
+        }
+
+        public static void GetCountByEveryColor(string connectionString)
+        {
+            using var connection = new SqlConnection();
+            connection.ConnectionString = connectionString;
+            connection.Open();
+
+            var insertCommandText = @"select count(id) as  [количество овощей], ClolorVF
+from[dbo].[Vegetables_Fruits]
+group by [ClolorVF]";
+
+            var selectCommand = new SqlCommand(insertCommandText, connection);
+            using var reader = selectCommand.ExecuteReader();
+            var lineCounter = 0;
+            while (reader.Read())
+            {
+                if (lineCounter == 0)
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        Console.Write(reader.GetName(i).ToString() + " ");
+                    }
+                }
+                Console.WriteLine();
+                lineCounter++;
+
+                Console.WriteLine(reader[0] + " " + reader[1]);
+            }
+        }
 
     }
 }
