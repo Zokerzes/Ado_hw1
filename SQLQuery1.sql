@@ -26,7 +26,8 @@
 
 --BackUp database [VegetablesAndFruits]
 --to disk='D:\itSteps\adonet'
+select * from[dbo].[Vegetables_Fruits]
 
-select NameVF,Caloric_Content as [калорийность от 145 до 201]
+select NameVF, ClolorVF
 from Vegetables_Fruits
-where Caloric_Content BETWEEN 145 AND 201
+where ClolorVF=N'Желтые' or [ClolorVF]=N'Розовый'

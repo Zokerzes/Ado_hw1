@@ -299,6 +299,7 @@ where Caloric_Content < 200";
                 Console.WriteLine(reader[0] + " " + reader[1]);
             }
         }
+
         public static void GetAllWithCaloricMaxX(string connectionString)
         {
             using var connection = new SqlConnection();
@@ -338,6 +339,35 @@ where Caloric_Content > 199";
 from Vegetables_Fruits
 where Caloric_Content BETWEEN 145 AND 201
 order by Caloric_Content";
+
+            var selectCommand = new SqlCommand(insertCommandText, connection);
+            using var reader = selectCommand.ExecuteReader();
+            var lineCounter = 0;
+            while (reader.Read())
+            {
+                if (lineCounter == 0)
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        Console.Write(reader.GetName(i).ToString() + " ");
+                    }
+                }
+                Console.WriteLine();
+                lineCounter++;
+
+                Console.WriteLine(reader[0] + " " + reader[1]);
+            }
+        }
+
+        public static void GetAllWithColorRoseAndYelow(string connectionString)
+        {
+            using var connection = new SqlConnection();
+            connection.ConnectionString = connectionString;
+            connection.Open();
+
+            var insertCommandText = @"select NameVF, ClolorVF
+from Vegetables_Fruits
+where ClolorVF=N'Желтые' or [ClolorVF]=N'Розовый'";
 
             var selectCommand = new SqlCommand(insertCommandText, connection);
             using var reader = selectCommand.ExecuteReader();
